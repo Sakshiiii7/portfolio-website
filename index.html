@@ -1,0 +1,162 @@
+ <!DOCTYPE html>
+ <html>
+    <head>
+        <title>Personal Portfolio website</title>
+        <link rel="stylesheet" href="style.css"> 
+    </head>
+    <body>
+     <div id="header">
+        <div class="container">
+          <nav>
+            <img src="images/img2.jpeg" class="logo">
+            <ul>
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#Portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav> 
+            <div class="header-text">
+                <p> BTech Student</p>
+                 <h1>Hi, I am<span> Sakshi </span><br>Chauhan from India</h1>
+            </div>
+        </div>
+     </div> 
+    <!---about-->
+     <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/img5.jpeg">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>I am a student of Btech<br>
+                      Detail -oriented team player with strong organizational skills. Ability to handle 
+                      multiple projects simultaneously with a high degree of accuracy.<br> Organized and 
+                      dependable candidate successful at managing multiple priorities with a positive 
+                      attitude. Willingness to take an added responsibilities to meet learn goals.  
+                  </p>
+                  <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills')" >Skills</p>
+                    <p class="tab-links " onclick="opentab('education')" >Education</p>
+                  </div>
+                  <div class="tab-contents  active-tab " id="skills">
+                    <ul>
+                        <li><span>Coding</span><br>Loves to solve coding question</li>
+                        <li><span>Web development</span><br>Website development</li>
+                    </ul>
+                  </div>
+                  <div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>2018</span><br>10Class from Salwan Public School</li>
+                        <li><span>2021</span><br>12Class from Salwan Public School</li>
+                          <li><span>2025</span><br>BTech from Banasthali Vidyapith </li>
+                    </ul>
+                  </div>
+                </div>
+            </div>
+        </div>
+     </div> 
+     <!----potfolio-- -->
+     <div id="Portfolio">
+      <div class="container">
+        <h1 class="sub-title">My Work</h1>
+        <div class="work-list">
+          <div class="work">
+            <img src="images/wrok1.jpg">
+            <div class="layer">
+              <h3>Exercise1</h3>
+              <p>
+                <a href="https://github.com/Sakshiiii7/iwtassignment">IWT Exercise1</a>
+              </p>
+              <a href="#"></a>
+            </div>
+          </div>
+          <div class="work">
+            <img src="images/work2.jpg">
+            <div class="layer">
+              <h3>Excercise2</h3>
+              <p>
+                <a href="https://github.com/Sakshiiii7/iwtassignment">IWT Exercise2</a>
+              </p>
+              <a href="#"></a>
+            </div>
+          </div>
+          <div class="work">
+            <img src="images/work3.jpeg">
+            <div class="layer">
+              <h3>Excercise3</h3>
+              <p>
+                <a href="https://github.com/Sakshiiii7/iwtassignment">IWT Exercise3</a>
+              </p>
+              <a href="#"></a>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="btn">See More</a>
+      </div>
+     </div>
+     <!----contact-->
+     <div id="contact">
+      <div class="container">
+          <div class="contact-left">
+            <h1 class="sub-title">Contact Me</h1>
+            <p><i class="fa-regular fa-paper-plane"></i>sakshi@gmail.com</p>
+            <p><i class="fa-solid fa-phone"></i>0123423445</p>
+            <div class="social-icons">
+              <a href=""><i class="fab fa-facebook"></i> </a>
+              <a href=""><i class="fab fa-twitter-square"></i></a>
+              <a href=""><i class="fab fa-instagram"></i></a>
+              <a href=""><i class="fab fa-linkedin"></i> </a>
+            </div>
+            <a href="images/2116815-Sakshi.pdf" download class="btn btn2">Download CV</a>
+          </div>
+          <div class="contact-right">
+             <form name="submit-to-google-sheet">
+              <input type="text" name="Name" placeholder="Your Name" required>
+              <input type="email" name="Email" placeholder="Your Email" required>
+              <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+              <button type="submit" class="btn btn2">Submit</button>  
+             </form> 
+             <span id="msg"></span>
+          </div>
+      </div>
+      <div class="copy-right">
+        <p>Copyright Sakshi</p>
+      </div>
+     </div>
+     
+     <script>
+      var tablinks=document.getElementsByClassName("tab-links");
+      var tabcontents=document.getElementsByClassName("tab-contents");
+      function opentab(tabname){
+        for(tablink of tabkinks){
+          tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+          tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+      }
+     </script>
+     <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbz0DiiLrwE_-jdezClUD_cQ42BMpSxDv0acWqxv74ITyL6n2FF6TTMxqs_6x3Jvie79XQ/exec'
+      const form = document.forms['submit-to-google-sheet']
+      const msg= document.getElementById("msg")
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => {
+                    msg.innerHTML="Message sent successfully"
+                    setTimeout(function(){
+                      msg.innerHTML=""
+                    },5000) 
+                    form.reset()
+          })
+          .catch(error => console.error('Error!', error.message))
+      })
+    </script>
+    </body>
+ </html>
